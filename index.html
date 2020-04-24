@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="ja"> 
+	<head> 
+		<meta charset="UTF-8"> 
+		<!-- Main Style Settings -->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="Who I am."> 
+		<title>Helveticolor</title> 
+		<link rel='preload' as='font' href='./fonts/raleway-v14-latin-600.woff2' crossorigin>
+		<link rel='preload' as='font' href='./fonts/press-start-2p-v8-latin-regular.woff2' crossorigin>
+		<style>
+			@font-face {
+				font-family: 'Raleway';
+				font-style: normal;
+				font-weight: 600;
+
+				src: local('Raleway SemiBold'), local('Raleway-SemiBold'),
+				url('./fonts/raleway-v14-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+			}
+			/* press-start-2p-regular - latin */
+			@font-face {
+				font-family: 'Press Start 2P';
+				font-style: normal;
+				font-weight: 400;
+				src: local('Press Start 2P Regular'), local('PressStart2P-Regular'),
+				url('../fonts/press-start-2p-v8-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+			}
+		</style>
+		<link rel="stylesheet" href="./style.css">
+
+	</head> 
+
+	<body>
+		<div class="glitch">
+			<canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
+		</div>
+
+
+		<div class='text'>
+			<span class='main'><a href="#">THIS IS ME</a></span> 
+			<span class='txt t1'><a href="https://www.notion.so/neuehelvetica/HelvetiColor-b331d311261d4595b0edd32f12b16968">Portfolio</a></span> 
+			<span class='txt t2'><a href="https://twitter.com/NeueHelvetica">Twitter</a></span> 
+			<span class='txt t3'><a href="https://www.instagram.com/neuehelvetica_/">Instagram</a></span> 
+			<span class='txt t4'><a href="mailto:irohatako@gmail.com">Mail</a></span> 
+		</div>
+
+
+	</body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+	<script src="./script.js"></script>
+</html>

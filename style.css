@@ -1,0 +1,66 @@
+
+
+html,body{
+    height:100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+canvas{
+    display: block;
+}
+.glitch{
+    flex: 0;
+    position: relative;
+}
+.p-canvas-webgl {
+    z-index: 99;
+    position: relative;
+}
+
+
+
+
+
+
+div.text{
+  position:absolute;
+  color:white;
+  z-index:999;
+  width:100%;
+}
+
+a{
+   color:transparent;
+   text-decoration:none;
+}
+span{
+  width:100%;
+  position:absolute;
+  white-space: nowrap;
+  text-align:center;
+  
+}
+span.main{  
+  font-family: 'Press Start 2P', cursive;
+  top:-140px;
+  font-size:40px;
+}
+span.txt {
+  font-family: 'Raleway', sans-serif;  
+  font-size:20px; 
+}
+span.t1{
+  top:-20px;
+}
+span.t2{
+  top:30px;
+}
+span.t3{
+  top:80px;
+}
+span.t4{
+  top:130px;
+}
