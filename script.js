@@ -16,7 +16,6 @@ const cxt2d = cvs2d.getContext("2d");
 const text = cvs2d.getContext("2d");
 
 
-
 class BackgroundImage {
   constructor() {
     this.uniforms = {
@@ -488,3 +487,9 @@ const init = () => {
 
 init();
  
+window.onload = function(){
+  var link_style = document.createElement('link');
+  link_style.setAttribute('rel', 'stylesheet');
+  link_style.setAttribute('href', 'style.css');
+  document.body.appendChild(link_style);
+};
