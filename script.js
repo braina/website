@@ -8,7 +8,6 @@ const glitch = 'THIS IS ME' || imgObj,  // string or img
       font = '40px "Press Start 2P"',
       background = ''  || imgObj;  // #000000 or rgba(0,0,0,0) or img
 
-
 const cvs2d = document.createElement('canvas');
       cvs2d.width = width1;
       cvs2d.height = height1;
