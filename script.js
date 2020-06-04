@@ -3,7 +3,7 @@ let   width1 = 0 || window.innerWidth,
 const imgURL = 'https://illustimage.com/photo/dl/1701.png',
       imgObj = new Image();
 let   imgWidth, imgHeight, imgAspect;
-const glitch = 'THIS IS ME' || imgObj,  // string or img
+const glitch = 'Draw it, Weave me.' || imgObj,  // string or img
       color = '#fff',
       font = '40px "Press Start 2P"',
       background = ''  || imgObj;  // #000000 or rgba(0,0,0,0) or img
