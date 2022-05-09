@@ -3,7 +3,7 @@ let   width1 = 0 || window.innerWidth,
 const imgURL = 'https://illustimage.com/photo/dl/1701.png',
       imgObj = new Image();
 let   imgWidth, imgHeight, imgAspect;
-const glitch = 'Draw it, Weave me.' || imgObj,  // string or img
+const glitch = 'Welcome' || string,  // string or img
       color = '#fff',
       font = '40px "Press Start 2P"',
       background = ''  || imgObj;  // #000000 or rgba(0,0,0,0) or img
@@ -67,10 +67,10 @@ class BackgroundImage {
 
 		text.fillStyle = color;
 		text.font =  '25px "Raleway", sans-serif';
-		text.fillText('Portfolio',width1/2,height1/2+50*0);
-		text.fillText('Twitter',width1/2,height1/2+50*1);
-		text.fillText('Instagram',width1/2,height1/2+50*2);
-		text.fillText('Mail',width1/2,height1/2+50*3);
+		text.fillText('Press any button to start',width1/2,height1/2+50*0);
+		// text.fillText('Twitter',width1/2,height1/2+50*1);
+		// text.fillText('Instagram',width1/2,height1/2+50*2);
+		// text.fillText('Mail',width1/2,height1/2+50*3);
 	}
 	createObj() {
 		return new THREE.Mesh(

@@ -34,7 +34,7 @@ div.text{
 
 a{
    color:transparent;
-   text-decoration:none;
+   text-decoration:none !important;
 }
 span{
 
@@ -64,4 +64,8 @@ span.t3{
 }
 span.t4{
   top:130px;
+}
+.nes-container.is-dark{
+  margin:60px;
+  margin-top:300px;
 }
