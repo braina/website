@@ -1,6 +1,6 @@
 let   width1 = 0 || window.innerWidth,
       height1 = 0 || window.innerHeight;
-const imgURL = 'https://illustimage.com/photo/dl/1701.png',
+const imgURL = './images/bg.png',
       imgObj = new Image();
 let   imgWidth, imgHeight, imgAspect;
 const glitch = 'Welcome' || string,  // string or img
