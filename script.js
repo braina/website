@@ -67,7 +67,7 @@ class BackgroundImage {
 
 		text.fillStyle = color;
 		text.font =  '25px "Raleway", sans-serif';
-		text.fillText('Press any button to start',width1/2,height1/2+50*0);
+		text.fillText('Press any button to visit.',width1/2,height1/2+50*0);
 		// text.fillText('Twitter',width1/2,height1/2+50*1);
 		// text.fillText('Instagram',width1/2,height1/2+50*2);
 		// text.fillText('Mail',width1/2,height1/2+50*3);
@@ -492,3 +492,4 @@ window.onload = function(){
   link_style.setAttribute('href', 'style.css');
   document.body.appendChild(link_style);
 };
+
