@@ -313,12 +313,12 @@ uk-logo{
 
 
 						<div class="iframe-outerhd">
-						<iframe style="min-width:90%" width="960" height="480" src="https://www.youtube.com/embed/QpSrhG8lBSg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<iframe style="min-width:90%" width="960" height="480" src="https://www.youtube.com/embed/QpSrhG8lBSg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						</div>
 						<br>
 
 						<div class="iframe-outerhd">
-							<iframe style="min-width:87%" src="https://docs.google.com/presentation/d/e/2PACX-1vQM6dZgtPLRsmj42f0twh6-i9kUa8F7SFrlMZLyJ7bzVzeBqVQGcXH06QDfvtHCN6uWIiQ5yN1nHKeP/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+							<iframe class="ifr" style="min-width:87%" src="https://docs.google.com/presentation/d/e/2PACX-1vQM6dZgtPLRsmj42f0twh6-i9kUa8F7SFrlMZLyJ7bzVzeBqVQGcXH06QDfvtHCN6uWIiQ5yN1nHKeP/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 						</div>
 
 						<div class='mgn'></div>
@@ -421,5 +421,17 @@ uk-logo{
 
 
 	</body>
+	<script>
+		window.addEventListener('load', function(){
+			console.log("load：リソースファイルを全て読み込みました。");
+			const elem = document.getElementsByClassName("ifr");
+const target = elem[0].contentWindow.document.querySelector(".punch-viewer-navbar-logo-text");
+					console.log(target);
 
+		});
+
+		window.addEventListener('DOMContentLoaded', function(){
+			console.log("DOMContentLoaded：HTMLを読み込みました。");
+		});
+	</script>
 </html>
