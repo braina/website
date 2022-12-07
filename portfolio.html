@@ -425,8 +425,8 @@ uk-logo{
 		window.addEventListener('load', function(){
 			console.log("load：リソースファイルを全て読み込みました。");
 			const elem = document.getElementsByClassName("ifr");
-const target = elem[0].contentWindow.document.querySelector(".punch-viewer-navbar-logo-text");
-					console.log(target);
+					const target = elem[0]
+					console.log(target.contentWindow);
 
 		});
 
