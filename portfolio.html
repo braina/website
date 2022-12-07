@@ -46,15 +46,57 @@ button.uk-lightbox-toolbar-icon.uk-close-large.uk-icon.uk-close{
 .mgn{
 	margin-top: 50px;
 	margin-bottom: 50px;
-
 }
 
 h3{
 	color:#a4a4a4 !important;
 }
 
-.uk-logo{
+.titlesub{
+	color:#3d3d3d;
+	padding:0 !important;
+}
 
+*+.uk-grid-margin, .uk-grid+.uk-grid, .uk-grid>.uk-grid-margin.titlesub{
+   margin-bottom:0;
+   margin-top:80px;
+}
+.titlesub +iframe{
+	margin-top:15px !important;
+}
+.titlesub +div{
+	margin-top:15px !important;
+}
+
+
+.titlesub p {
+	
+	position: relative;
+	text-align: center;
+}
+.titlesub p span {
+	position: relative;
+	z-index: 2;
+	display: inline-block;
+	margin: 0 4em;
+	padding: 0 1em;
+	background-color: #f8f8f8;
+	text-align: left;
+}
+.titlesub p::before {
+	position: absolute;
+	top: 50%;
+	z-index: 1;
+	content: '';
+	display: block;
+	width: 100%;
+	height: 1px;
+	background: #ccc;
+	background: -webkit-linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+	background: linear-gradient(-45deg, transparent, #ccc 10%, #ccc 90%, transparent);
+}
+
+uk-logo{
 	color:#666 !important;
 }
 
@@ -81,6 +123,11 @@ h3{
 							</a>
 						</div>
 						<div class='mgn'></div>
+
+						<div class="uk-margin-auto titlesub">
+							<p><span>CHARM</span></p>
+						</div>
+
 
 						<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRbZsWCM75dJybZZ6BQA_Q-ErhISMnDJFj7tujH_K75fXquvD7OBfzD_TCLjgAwYq_RNyi20aqtuBCe/embed?start=false&loop=false&delayms=3000" frameborder="0" width="100%" height="540" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
@@ -122,6 +169,10 @@ h3{
 
 						<div class='mgn'></div>
 
+						<div class="uk-margin-auto titlesub">
+							<p><span>The Bread</span></p>
+						</div>
+
 						<div uk-grid  uk-lightbox="animation: fade">
 							<div>
 								<a class="img-shadow uk-inline" href="./images/bread0.png" data-caption="The Bread -  ideasketch">
@@ -143,6 +194,10 @@ h3{
 
 						<div class='mgn'></div>
 
+						<div class="uk-margin-auto titlesub">
+							<p><span>Alice</span></p>
+						</div>
+
 						<div uk-grid  uk-lightbox="animation: fade">
 							<div>
 								<a class="img-shadow uk-inline" href="./images/alice.png" data-caption="Alice - script & thumbnails">
@@ -163,6 +218,11 @@ h3{
 
 
 						<div class='mgn'></div>
+
+						<div class="uk-margin-auto titlesub">
+							<p><span>HAUNTED</span></p>
+						</div>
+
 						<div uk-grid  uk-lightbox="animation: fade">
 							<div>
 								<a class="img-shadow uk-inline" href="./images/haunted/h0.jpg" data-caption="HAUNTED - storyspine & ideasketch">
@@ -211,6 +271,11 @@ h3{
 
 
 						<div class='mgn'></div>
+
+						<div class="uk-margin-auto titlesub">
+							<p><span>choo!choo!choo!</span></p>
+						</div>
+
 						<iframe style="min-width:90%" width="960" height="480" src="https://www.youtube.com/embed/QpSrhG8lBSg?rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 						<br>
 
@@ -219,6 +284,10 @@ h3{
 
 
 						<div class='mgn'></div>
+
+						<div class="uk-margin-auto titlesub">
+							<p><span>Drawings</span></p>
+						</div>
 
 						<div uk-grid  uk-lightbox="animation: fade">
 							<div>
