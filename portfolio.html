@@ -58,8 +58,8 @@ h3{
 }
 
 *+.uk-grid-margin, .uk-grid+.uk-grid, .uk-grid>.uk-grid-margin.titlesub{
-   margin-bottom:0;
-   margin-top:80px;
+	margin-bottom:0;
+	margin-top:80px;
 }
 .titlesub +iframe{
 	margin-top:15px !important;
@@ -70,7 +70,7 @@ h3{
 
 
 .titlesub p {
-	
+
 	position: relative;
 	text-align: center;
 }
@@ -101,35 +101,35 @@ uk-logo{
 }
 
 .iframe-outer{
-  position:relative;
-  padding-top:62.5%; 
-  width:100%;
-  margin-right:30px;
+	position:relative;
+	padding-top:62.5%; 
+	width:100%;
+	margin-right:30px;
 }
 
 .iframe-outerhd{
-  position:relative;
-  padding-top:56.25%; 
-  width:100%;
-  margin-right:30px;
+	position:relative;
+	padding-top:56.25%; 
+	width:100%;
+	margin-right:30px;
 }
 
 
 .iframe-outer > iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  padding-left:30px;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	padding-left:30px;
 }
 .iframe-outerhd > iframe{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  padding-left:30px;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	padding-left:30px;
 }
 .linktext{
 	text-align:center;
@@ -163,11 +163,14 @@ uk-logo{
 
 					<div  uk-grid>
 
-						<div>
-							<a class="img-shadow uk-inline" href="./images/001.jpg">
-								<img src="./images/001.jpg"  width="1800" height="1200"  alt="">
-							</a>
+						<div uk-grid  uk-lightbox="animation: fade">
+							<div>
+								<a class="img-shadow uk-inline" href="./images/001.jpg">
+									<img src="./images/001.jpg"  width="1800" height="1200"  alt="">
+								</a>
+							</div>
 						</div>
+
 						<div class='mgn'></div>
 
 						<div class="uk-margin-auto titlesub">
@@ -371,13 +374,15 @@ uk-logo{
 							</div>
 						</div>
 
-						<div>
-							<a class="img-shadow uk-inline" href="./images/999.jpg">
-								<img src="./images/999.jpg"  width="1800" height="1200"  alt="">
-							</a>
+						<div uk-grid  uk-lightbox="animation: fade">
+							<div>
+								<a class="img-shadow uk-inline" href="./images/999.jpg">
+									<img src="./images/999.jpg"  width="1800" height="1200"  alt="">
+								</a>
+							</div>
 						</div>
 
-						<button  class="uk-align-center uk-button uk-button-secondary" type="button" uk-toggle="target:.toggle"><span class="toggle">その他の作品 ▼</span><span class='toggle' hidden>その他の作品 ▲</span></button>
+						<button  class="uk-align-center uk-button uk-button-secondary" type="button" uk-toggle="target:.toggle"><span class="toggle">more Storyboards ▼</span><span class='toggle' hidden>less Storyboards ▲</span></button>
 
 						<div class="uk-text-center" uk-grid>
 							<div uk-grid  class="toggle" hidden>
@@ -391,7 +396,7 @@ uk-logo{
 						</div>
 					</div>
 				</div>
-		
+
 
 				<div class="uk-width-1-5"></div>
 
