@@ -391,28 +391,28 @@ uk-logo{
 						</div>
 					</div>
 				</div>
-		
-
 				<div class="uk-width-1-5"></div>
 
 			</div>
 
 
+			<button  class="uk-align-center uk-button uk-button-secondary" type="button">勉強会資料サンプル</button>
+			<button  class="uk-align-center uk-button uk-button-secondary" type="button">Study用サイト</button>
 
-			<nav class="uk-navbar-container uk-margin" uk-navbar>
-				<div class="uk-navbar-center">
-					<div class="uk-navbar-center-left">
-						<ul class="uk-navbar-nav">
-							<li> <a class="navbarlink" href="https://drive.google.com/drive/folders/1Dy-ke7ZJmUgocHL3rcv_Ns5UlVrbO3d1" target="_blank">勉強会資料サンプル</a></li>
-						</ul>
-					</div>
-					<div class="uk-navbar-center-right">
-						<ul class="uk-navbar-nav">
-							<li><a class="navbarlink" href="http://scrapbox.io/Filmstudy" target="_blank">FilmStudy用サイト</a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
+			<!-- <nav class="uk-navbar-container uk-margin" uk-navbar> -->
+				<!-- <div class="uk-navbar-center"> -->
+					<!-- <div class="uk-navbar-center-left"> -->
+						<!-- <ul class="uk-navbar-nav"> -->
+							<!-- <li> <a class="navbarlink" href="https://drive.google.com/drive/folders/1Dy-ke7ZJmUgocHL3rcv_Ns5UlVrbO3d1" target="_blank">勉強会資料サンプル</a></li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+					<!-- <div class="uk-navbar-center-right"> -->
+						<!-- <ul class="uk-navbar-nav"> -->
+							<!-- <li><a class="navbarlink" href="http://scrapbox.io/Filmstudy" target="_blank">Study用サイト</a></li> -->
+						<!-- </ul> -->
+					<!-- </div> -->
+				<!-- </div> -->
+			<!-- </nav> -->
 
 
 			<hr class="uk-divider-icon" style="margin:auto;width:80%; margin-top:50px;">
