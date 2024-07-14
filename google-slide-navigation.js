@@ -8,6 +8,16 @@ function waitForIframe(iframe, callback) {
   }
 }
 
+// キーボードイベントをシミュレートする関数
+function simulateKeyPress(iframe, keyCode) {
+  const event = new KeyboardEvent('keydown', {
+    bubbles: true,
+    cancelable: true,
+    keyCode: keyCode
+  });
+  iframe.contentDocument.dispatchEvent(event);
+}
+
 // 個別のiframeに対してナビゲーションをセットアップする関数
 function setupSingleSlideNavigation(iframe) {
   // オーバーレイ要素を作成
@@ -38,11 +48,11 @@ function setupSingleSlideNavigation(iframe) {
 
   // クリックイベントを追加
   leftHalf.addEventListener('click', () => {
-    iframe.contentWindow.postMessage('{"action":"prev"}', '*');
+    simulateKeyPress(iframe, 37); // 左矢印キーのキーコード
   });
 
   rightHalf.addEventListener('click', () => {
-    iframe.contentWindow.postMessage('{"action":"next"}', '*');
+    simulateKeyPress(iframe, 39); // 右矢印キーのキーコード
   });
 
   // オーバーレイに左右の領域を追加
@@ -54,34 +64,41 @@ function setupSingleSlideNavigation(iframe) {
 
   // タッチデバイス用のイベントリスナーを追加
   let xDown = null;
+  let yDown = null;
 
   function handleTouchStart(evt) {
-    xDown = evt.touches[0].clientX;
+    const firstTouch = evt.touches[0];
+    xDown = firstTouch.clientX;
+    yDown = firstTouch.clientY;
   }
 
-  function handleTouchEnd(evt) {
-    if (!xDown) {
+  function handleTouchMove(evt) {
+    if (!xDown || !yDown) {
       return;
     }
 
-    const xUp = evt.changedTouches[0].clientX;
-    const xDiff = xDown - xUp;
+    const xUp = evt.touches[0].clientX;
+    const yUp = evt.touches[0].clientY;
 
-    if (Math.abs(xDiff) > 50) { // スワイプの距離が50px以上の場合
+    const xDiff = xDown - xUp;
+    const yDiff = yDown - yUp;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
       if (xDiff > 0) {
         // 左スワイプ
-        iframe.contentWindow.postMessage('{"action":"next"}', '*');
+        simulateKeyPress(iframe, 39); // 右矢印キーのキーコード
       } else {
         // 右スワイプ
-        iframe.contentWindow.postMessage('{"action":"prev"}', '*');
+        simulateKeyPress(iframe, 37); // 左矢印キーのキーコード
       }
     }
 
     xDown = null;
+    yDown = null;
   }
 
   overlay.addEventListener('touchstart', handleTouchStart, false);
-  overlay.addEventListener('touchend', handleTouchEnd, false);
+  overlay.addEventListener('touchmove', handleTouchMove, false);
 
   console.log('Slide navigation setup complete for iframe:', iframe.src);
 }
