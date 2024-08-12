@@ -70,6 +70,8 @@
 		.thumbs:hover:after {
 			width: 100%;
 		}
+
+		
 	</style>
 </head>
 
@@ -117,9 +119,12 @@
 		</div>
 	</div>
 
-	<div id="panelSelector"
-		class="flex-none flex justify-center space-x-2 sm:space-x-4 p-4 bg-black overflow-x-auto">
+	<div id="panelSelector" class="flex-none flex justify-center space-x-2 sm:space-x-4 p-4 bg-black overflow-x-auto">
 		<!-- Panels will be dynamically added here -->
+		<button id="addPanelBtn"
+			class="w-16 h-9 bg-gray-700 text-white flex items-center justify-center rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+			<span class="text-2xl">+</span>
+		</button>
 	</div>
 	<div id="brushPreview"></div>
 
@@ -450,20 +455,20 @@
 		});
 
 		const panelSelector = document.getElementById('panelSelector');
-		panels.forEach((panel, index) => {
-			const panelBtn = document.createElement('button');
-			panelBtn.className = 'thumbs w-16 h-9 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden';
-			panelBtn.dataset.index = index;
+        panels.forEach((panel, index) => {
+            const panelBtn = document.createElement('button');
+            panelBtn.className = 'thumbs w-16 h-9 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden';
+            panelBtn.dataset.index = index;
 
-			panelBtn.addEventListener('click', () => {
-				currentPanel = index;
-				loadPanel(currentPanel);
-				document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
-				panelBtn.classList.add('ring-2', 'ring-blue-500');
-			});
-			panelSelector.appendChild(panelBtn);
-			updateThumbnail(index); // 初期サムネイルを作成
-		});
+            panelBtn.addEventListener('click', () => {
+                currentPanel = index;
+                loadPanel(currentPanel);
+                document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
+                panelBtn.classList.add('ring-2', 'ring-blue-500');
+            });
+            panelSelector.insertBefore(panelBtn, document.getElementById('addPanelBtn'));
+            updateThumbnail(index);
+        });
 
 
 		let isCtrlPressed = false;
@@ -560,6 +565,35 @@
 			captionArea.style.pointerEvents = 'auto';
 		});
 
+
+		function addBlankPanel() {
+			const newPanelIndex = panels.length;
+			panels.push({ image: null, caption: "", url: '' });
+			panelDrawings.push({ lines: [] });
+
+			const panelBtn = document.createElement('button');
+			panelBtn.className = 'thumbs w-16 h-9 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden';
+			panelBtn.dataset.index = newPanelIndex;
+
+			panelBtn.addEventListener('click', () => {
+				currentPanel = newPanelIndex;
+				loadPanel(currentPanel);
+				document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
+				panelBtn.classList.add('ring-2', 'ring-blue-500');
+			});
+
+			const panelSelector = document.getElementById('panelSelector');
+			panelSelector.insertBefore(panelBtn, document.getElementById('addPanelBtn'));
+			updateThumbnail(newPanelIndex);
+
+			// Switch to the new panel
+			currentPanel = newPanelIndex;
+			loadPanel(currentPanel);
+			document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
+			panelBtn.classList.add('ring-2', 'ring-blue-500');
+		}
+
+		document.getElementById('addPanelBtn').addEventListener('click', addBlankPanel);
 
 		window.addEventListener('resize', resizeCanvas);
 		resizeCanvas();
