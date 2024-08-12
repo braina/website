@@ -37,11 +37,6 @@
 			display: none;
 		}
 
-		canvas {
-			max-width: 1100px;
-
-		}
-
 		#drawingArea {
 			cursor: none;
 		}
@@ -71,7 +66,17 @@
 			width: 100%;
 		}
 
-		
+		#canvasContainer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		canvas {
+			max-width: 100%;
+			max-height: 100%;
+		}
 	</style>
 </head>
 
@@ -110,7 +115,8 @@
 		</div>
 	</div>
 
-	<div id="canvasContainer" class="flex-grow flex justify-center items-center p-4 sm:p-6 md:p-8 relative">
+
+	<div id="canvasContainer" class="flex-grow overflow-hidden">
 		<div class="relative">
 			<canvas id="drawingArea" class="border-2 border-gray-700 bg-white"></canvas>
 			<div id="captionArea"
@@ -127,6 +133,7 @@
 		</button>
 	</div>
 	<div id="brushPreview"></div>
+	<div id="brushPreview"></div>
 
 
 	<script>
@@ -140,8 +147,8 @@
 			{ image: './images/panels/1.png', caption: "[* Door closing sound]", url: '' },
 			{ image: './images/panels/2.png', caption: "I brought the <span class='bg-yellow-300 text-black'>storyboard</span> for you to check out.", url: 'https://helvetica.xyz/portfolio.html' },
 			{ image: './images/panels/3.png', caption: "(O.S.) You know, I did major in <span class='bg-yellow-300 text-black'>design engineering</span>.", url: 'https://neuehelvetica.notion.site/HCI-PORTFOLIO-31bb8346bbe64283a73b6cef86d17933' },
-			{ image: './images/panels/4.png', caption: "Word on <span class='bg-yellow-300 text-black'>social media</span> is we’d make a pretty unbeatable team.", url: 'https://x.com/NeueHelvetica' },
-			{ image: './images/panels/5.png', caption: "Heh… not bad at all. I’ll send you the job details via <span class='bg-yellow-300 text-black'>email</span>.", url: 'mailto:irohatako@gmail.com' },
+			{ image: './images/panels/4.png', caption: "Word on <span class='bg-yellow-300 text-black'>social media</span> is we'd make a pretty unbeatable team.", url: 'https://x.com/NeueHelvetica' },
+			{ image: './images/panels/5.png', caption: "Heh… not bad at all. I'll send you the job details via <span class='bg-yellow-300 text-black'>email</span>.", url: 'mailto:irohatako@gmail.com' },
 			{ image: null, caption: 'Please get back to me as soon as you can.', url: '' }
 		];
 		let currentPanel = 0;
@@ -162,8 +169,8 @@
 		function resizeCanvas() {
 			const container = document.getElementById('canvasContainer');
 			const aspectRatio = 16 / 9;
-			let newWidth = container.clientWidth - 32; // Subtracting padding
-			let newHeight = container.clientHeight - 32; // Subtracting padding
+			let newWidth = container.clientWidth;
+			let newHeight = container.clientHeight;
 
 			if (newWidth / newHeight > aspectRatio) {
 				newWidth = newHeight * aspectRatio;
@@ -174,6 +181,8 @@
 			const scaleX = newWidth / canvas.width;
 			const scaleY = newHeight / canvas.height;
 
+			canvas.style.width = `${newWidth}px`;
+			canvas.style.height = `${newHeight}px`;
 			canvas.width = newWidth;
 			canvas.height = newHeight;
 
@@ -455,20 +464,20 @@
 		});
 
 		const panelSelector = document.getElementById('panelSelector');
-        panels.forEach((panel, index) => {
-            const panelBtn = document.createElement('button');
-            panelBtn.className = 'thumbs w-16 h-9 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden';
-            panelBtn.dataset.index = index;
+		panels.forEach((panel, index) => {
+			const panelBtn = document.createElement('button');
+			panelBtn.className = 'thumbs w-16 h-9 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 relative overflow-hidden';
+			panelBtn.dataset.index = index;
 
-            panelBtn.addEventListener('click', () => {
-                currentPanel = index;
-                loadPanel(currentPanel);
-                document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
-                panelBtn.classList.add('ring-2', 'ring-blue-500');
-            });
-            panelSelector.insertBefore(panelBtn, document.getElementById('addPanelBtn'));
-            updateThumbnail(index);
-        });
+			panelBtn.addEventListener('click', () => {
+				currentPanel = index;
+				loadPanel(currentPanel);
+				document.querySelectorAll('#panelSelector button').forEach(btn => btn.classList.remove('ring-2', 'ring-blue-500'));
+				panelBtn.classList.add('ring-2', 'ring-blue-500');
+			});
+			panelSelector.insertBefore(panelBtn, document.getElementById('addPanelBtn'));
+			updateThumbnail(index);
+		});
 
 
 		let isCtrlPressed = false;
