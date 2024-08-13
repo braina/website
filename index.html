@@ -119,6 +119,40 @@
 	</div>
 
 
+	<div id="popover" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+		<div
+			class="bg-gray-900 bg-opacity-80 backdrop-filter backdrop-blur-sm text-white p-8 pb-12 rounded-lg max-w-4xl w-full mx-4 shadow-lg border border-gray-700 relative">
+			<button id="closePopover" class="absolute top-2 right-4 text-gray-400 hover:text-white text-2xl font-bold">
+				✕
+			</button>
+			<h2 class="text-2xl font-bold mb-6 text-blue-400 text-center">Welcome!</h2>
+			<div class="flex flex-col md:flex-row gap-8">
+				<div class="flex-1 space-y-4">
+					<p id="intro-en" class="mb-2"></p>
+					<p id="usage-en" class="mb-2"></p>
+					<ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
+						<li id="usage-1-en"></li>
+						<li id="usage-2-en"></li>
+						<li id="usage-3-en"></li>
+					</ul>
+					<p id="enjoy-en" class="italic text-gray-400"></p>
+				</div>
+				<div class="flex-1 space-y-4">
+					<p id="intro-jp" class="mb-2"></p>
+					<p id="usage-jp" class="mb-2"></p>
+					<ul class="list-disc list-inside space-y-1 text-sm text-gray-300">
+						<li id="usage-1-jp"></li>
+						<li id="usage-2-jp"></li>
+						<li id="usage-3-jp"></li>
+					</ul>
+					<p id="enjoy-jp" class="italic text-gray-400"></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<div id="canvasContainer" class="flex-grow overflow-hidden">
 		<div class="relative">
 			<canvas id="drawingArea" class="border-2 border-gray-700 bg-white"></canvas>
@@ -377,19 +411,82 @@
 			ctx.beginPath();
 		}
 
+
 		function updateCaption() {
 			const caption = panels[currentPanel].caption;
 			const captionArea = document.getElementById('captionArea');
 			caption === "" ? captionArea.style.display = 'none' : captionArea.style.display = 'block';
 			captionArea.innerHTML = caption;
 			const link = panels[currentPanel].url;
-			if (link === "") captionArea.onclick = "";
-			else
+
+			if (currentPanel === 0) {
+				captionArea.onclick = showPopover;
+			} else if (link === "") {
+				captionArea.onclick = "";
+			} else {
 				captionArea.onclick = () => {
-					// You can change this URL to any desired destination
 					window.open(link, '_blank');
 				};
+			}
 		}
+
+
+
+		const popoverContent = {
+			en: {
+				intro: "This is nakaya's website, created with my experience in storyboarding, engineering, and design.",
+				usage: "<strong class='text-yellow-300'>Flip through the panels and click on the captions to open links to my works, social media & contact info</strong>.",
+				usageDetails: [
+					"Use left/right arrow keys to switch panels",
+					"Draw with pen (B) or eraser (E)",
+					"Undo with Ctrl+Z, Redo with Ctrl+Y"
+				],
+				enjoy: "Feel free to draw and play around!"
+			},
+			jp: {
+				intro: "このページは、ストーリーボード、エンジニアリング、デザインの経験を持つnakayaのウェブサイトです。",
+				usage: "<strong class='text-yellow-300'>パネルをめくって字幕をクリックすると、私のポートフォリオやSNS、連絡先へのリンクが開きます</strong>。",
+				usageDetails: [
+					"左右の矢印キーでパネルを切り替え",
+					"ペン(B)や消しゴム(E)を使って描画",
+					"Ctrl+ZでUndo、Ctrl+YでRedo"
+				],
+				enjoy: "自由に絵を描いて遊んでください！"
+			}
+		};
+
+		function showPopover() {
+			const popover = document.getElementById('popover');
+			popover.classList.remove('hidden');
+			document.getElementById('intro-en').textContent = popoverContent.en.intro;
+			document.getElementById('intro-jp').textContent = popoverContent.jp.intro;
+			document.getElementById('usage-en').innerHTML = popoverContent.en.usage;
+			document.getElementById('usage-jp').innerHTML = popoverContent.jp.usage;
+			document.getElementById('usage-1-en').textContent = popoverContent.en.usageDetails[0];
+			document.getElementById('usage-1-jp').textContent = popoverContent.jp.usageDetails[0];
+			document.getElementById('usage-2-en').textContent = popoverContent.en.usageDetails[1];
+			document.getElementById('usage-2-jp').textContent = popoverContent.jp.usageDetails[1];
+			document.getElementById('usage-3-en').textContent = popoverContent.en.usageDetails[2];
+			document.getElementById('usage-3-jp').textContent = popoverContent.jp.usageDetails[2];
+			document.getElementById('enjoy-en').textContent = popoverContent.en.enjoy;
+			document.getElementById('enjoy-jp').textContent = popoverContent.jp.enjoy;
+		}
+
+		function closePopover() {
+			document.getElementById('popover').classList.add('hidden');
+		}
+
+		document.getElementById('popover').addEventListener('click', (event) => {
+			if (event.target.id === 'popover') {
+				closePopover();
+			}
+		});
+
+
+		document.getElementById('closePopover').addEventListener('click', () => {
+			document.getElementById('popover').classList.add('hidden');
+		});
+
 
 
 		function redrawLines(index) {
