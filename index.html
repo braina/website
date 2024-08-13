@@ -75,7 +75,7 @@
 			/* 上下に16pxの余白を追加 */
 		}
 
-		canvas {
+		canvas#drawingArea {
 			max-width: 100%;
 			max-height: calc(100% - 32px);
 			/* 上下の余白分を引く */
@@ -163,8 +163,6 @@
 		let panelDrawings = panels.map(() => ({ lines: [] }));
 		let currentLine = [];
 
-		const audio = new Audio('./res/sound.mp3');
-		audio.play();
 
 		let originalCanvasWidth = 0;
 		let originalCanvasHeight = 0;
@@ -533,18 +531,21 @@
 		canvas.tabIndex = 1000;
 		canvas.focus();
 
-
 		canvas.addEventListener('touchstart', (e) => {
+			e.preventDefault(); // タッチイベントのデフォルト動作を防ぐ
 			startDrawing(e);
 			captionArea.style.pointerEvents = 'none';
-		});
+		}, { passive: false });
 
+		// touchmove イベントリスナーも更新
+		canvas.removeEventListener('touchmove', draw);
 		canvas.addEventListener('touchmove', (e) => {
-			e.preventDefault(); // Prevent scrolling while drawing
+			e.preventDefault(); // スクロールを防ぐ
 			draw(e);
 			updateBrushPreview(e);
-		});
+		}, { passive: false });
 
+		// その他のイベントリスナーは変更なし
 		canvas.addEventListener('touchend', () => {
 			stopDrawing();
 			captionArea.style.pointerEvents = 'auto';
@@ -555,6 +556,7 @@
 			captionArea.style.pointerEvents = 'auto';
 		});
 
+		// マウスイベントは変更なし
 		canvas.addEventListener('mousedown', (e) => {
 			startDrawing(e);
 			captionArea.style.pointerEvents = 'none';
@@ -575,7 +577,6 @@
 			brushPreview.style.display = 'none';
 			captionArea.style.pointerEvents = 'auto';
 		});
-
 
 		function addBlankPanel() {
 			const newPanelIndex = panels.length;
